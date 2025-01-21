@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to TaskFlow</h1>
+    <p>This is the home page.</p>
+    <a href="/about">About</a>
+
+    <!-- Список задач -->
+    <h2>Tasks</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.title }}</strong>: {{ task.description }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Форма для добавления новой задачи -->
+    <h2>Add New Task</h2>
+    <form action="/tasks/" method="post">
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter task title" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" placeholder="Enter task description" required>
+        </div>
+        <button type="submit">Add Task</button>
+    </form>
+</body>
+</html>
